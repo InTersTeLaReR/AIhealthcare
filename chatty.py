@@ -190,8 +190,22 @@ if about_button:
 # Handle new feature interactions
 
 # User Profile Feature
+# User Profile Feature
 if user_profile_button:
     st.write("🔒 **User Profile**: Manage and update your profile securely with us. We prioritize your privacy and ensure that your personal data is encrypted and protected at all times...")
+    
+    # Add "Meet the Developers" section
+    st.markdown("""
+        <div style="margin-top: 2rem;">
+            <h3>👨‍💻 Meet the Developers</h3>
+            <ul style="font-size: 1.1rem; line-height: 2;">
+                <li><strong>ARJUN P GUPTA</strong> - Developer ID: 1MP22CS008</li>
+                <li><strong>KIRAN R</strong> - Developer ID: 1MP22CS025</li>
+                <li><strong>SANATH S GOWDA</strong> - Developer ID: 1MP22CS046</li>
+                <li><strong>SANTOSH S</strong> - Developer ID: 1MP22CS047</li>
+            </ul>
+        </div>
+    """, unsafe_allow_html=True)
 
 # Help Feature
 if help_button:
