@@ -18,62 +18,94 @@ st.set_page_config(
 # Add custom CSS to enhance styling
 st.markdown("""
     <style>
-        /* Adjust page layout for full screen usage */
+        /* General Page Styles */
         .main {
             padding: 2rem;
             max-width: 100%;
             margin: 0 auto;
+            font-family: 'Helvetica Neue', sans-serif;
         }
 
+        /* Sidebar styles */
         .sidebar .sidebar-content {
-            background-color: #f1f1f1;
-            padding: 1rem;
+            background-color: #F4F6F9;
+            padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar .sidebar-header {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #333;
+            color: #2C3E50;
         }
 
         .sidebar button {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: bold;
-            padding: 10px;
-            background-color: #4CAF50;
+            padding: 12px;
+            background-color: #3498DB;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
         }
 
         .sidebar button:hover {
-            background-color: #45a049;
+            background-color: #2980B9;
         }
 
+        /* Chat Messages */
         .chat-message-user, .chat-message-assistant {
-            font-family: 'Arial', sans-serif;
             padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            background-color: #e0f7fa;
-            max-width: 80%;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            max-width: 75%;
             word-wrap: break-word;
+            font-size: 1.1rem;
+        }
+
+        .chat-message-user {
+            background-color: #EAF4FB;
+            color: #2C3E50;
         }
 
         .chat-message-assistant {
-            background-color: #f1f8e9;
+            background-color: #DFF0D8;
+            color: #2C3E50;
         }
 
-        /* Style for the About section */
+        /* Custom CSS for animation */
+        .clean-message {
+            font-size: 3rem;
+            color: #28A745;
+            text-align: center;
+            animation: fadeOut 3s ease-in-out;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Search bar animation */
+        .search-bar {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* About Section */
         .about-section {
-            background-color: #f9f9f9;
+            background-color: #F9FAFB;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            font-size: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -88,29 +120,6 @@ st.markdown("""
             color: #34495E;
             line-height: 1.8;
             margin-bottom: 1rem;
-        }
-
-        /* Custom CSS for animation */
-        .clean-message {
-            font-size: 3rem;
-            color: green;
-            text-align: center;
-            animation: fadeOut 3s ease-in-out;
-        }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        .search-bar {
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
         }
     </style>
 """, unsafe_allow_html=True)
@@ -135,8 +144,13 @@ with st.sidebar:
     st.markdown("### ⚙️ Navigation", unsafe_allow_html=True)
     st.markdown("---")
     chat_button = st.button("Chat", type="primary")
-    settings_button = st.button("Settings", type="secondary")
     about_button = st.button("About", type="secondary")
+
+    # New features
+    st.markdown("---")
+    user_profile_button = st.button("User Profile", type="secondary")
+    help_button = st.button("Help", type="secondary")
+    feedback_button = st.button("Feedback", type="secondary")
     
     # Additional sidebar options
     st.markdown("---")
@@ -172,6 +186,20 @@ if about_button:
             </p>
         </div>
     """, unsafe_allow_html=True)
+
+# Handle new feature interactions
+
+# User Profile Feature
+if user_profile_button:
+    st.write("🔒 **User Profile**: Manage and update your profile securely with us. We prioritize your privacy and ensure that your personal data is encrypted and protected at all times...")
+
+# Help Feature
+if help_button:
+    st.write("💡 **Help**: Here are some helpful tips for using this platform:\n- Type your queries in the input box.\n- Ask for healthcare insights and recommendations.")
+
+# Feedback Feature
+if feedback_button:
+    st.write("✍️ **Feedback**: Please provide your feedback here:\n- What did you like?\n- What can we improve?")
 
 # Display the chat history
 for message in st.session_state.chat_session.history:
