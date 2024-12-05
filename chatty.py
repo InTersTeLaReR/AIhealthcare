@@ -18,12 +18,17 @@ st.set_page_config(
 # Add custom CSS to enhance styling
 st.markdown("""
     <style>
+        
+            
+
+
         /* General Page Styles */
         .main {
             padding: 2rem;
             max-width: 100%;
             margin: 0 auto;
             font-family: 'Helvetica Neue', sans-serif;
+            
         }
 
         /* Sidebar styles */
@@ -121,6 +126,7 @@ st.markdown("""
             line-height: 1.8;
             margin-bottom: 1rem;
         }
+            
     </style>
 """, unsafe_allow_html=True)
 
@@ -155,17 +161,21 @@ with st.sidebar:
     # Additional sidebar options
     st.markdown("---")
     if st.button("Clear Chat"):
-        # Display clean message and hide chat for a moment
+        # Display "all clear👍" message and reset the chat history
         with st.empty():
-            st.markdown("<div class='clean-message'>🧹 Everything clean!</div>", unsafe_allow_html=True)
+            st.markdown("<div class='clean-message'>all clear👍</div>", unsafe_allow_html=True)
         
-        time.sleep(2)  # Wait for the animation to finish
+        # Clear the session state without restarting the app
         st.session_state.chat_session = model.start_chat(history=[])  # Restart the chat session
-        st.experimental_rerun()  # Restart the app to reset the state
+        
+        # No need for st.experimental_rerun(), just refresh the page
+        #st.experimental_rerun()  # Ensure the page state is reset
 
 # Main page content
-st.title("🩺CareHub AI Healthcare Diagnosis💊")
+st.title("BGS College of Engineering and Technology")
 st.markdown("<hr>", unsafe_allow_html=True)
+st.title("🩺CareHub AI Healthcare Diagnosis💊")
+
 
 # Display "About" section content when About button is clicked
 if about_button:
