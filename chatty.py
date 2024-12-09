@@ -18,17 +18,12 @@ st.set_page_config(
 # Add custom CSS to enhance styling
 st.markdown("""
     <style>
-        
-            
-
-
         /* General Page Styles */
         .main {
             padding: 2rem;
             max-width: 100%;
             margin: 0 auto;
             font-family: 'Helvetica Neue', sans-serif;
-            
         }
 
         /* Sidebar styles */
@@ -151,7 +146,9 @@ with st.sidebar:
     st.markdown("---")
     chat_button = st.button("Chat", type="primary")
     about_button = st.button("About", type="secondary")
-
+    products_button = st.button("Products", type="secondary")
+    contact_us_button = st.button("Contact Us", type="secondary")
+    
     # New features
     st.markdown("---")
     user_profile_button = st.button("User Profile", type="secondary")
@@ -168,16 +165,12 @@ with st.sidebar:
         # Clear the session state without restarting the app
         st.session_state.chat_session = model.start_chat(history=[])  # Restart the chat session
         
-        # No need for st.experimental_rerun(), just refresh the page
-        #st.experimental_rerun()  # Ensure the page state is reset
-
 # Main page content
 st.title("BGS College of Engineering and Technology")
 st.markdown("<hr>", unsafe_allow_html=True)
 st.title("🩺CareHub AI Healthcare Diagnosis💊")
 
-
-# Display "About" section content when About button is clicked
+# Display the "About" section content when About button is clicked
 if about_button:
     st.markdown("""
         <div class="about-section">
@@ -197,9 +190,50 @@ if about_button:
         </div>
     """, unsafe_allow_html=True)
 
+# Display the "Products" section content when Products button is clicked
+if products_button:
+    st.markdown("""
+        <div class="about-section">
+            <h2>Our Products</h2>
+            <p>
+               CareHub is at the forefront of transforming healthcare through artificial intelligence. Our suite of cutting-edge AI software products is designed to enhance diagnostic precision, improve patient outcomes, and streamline healthcare processes. With advanced machine learning models and intelligent algorithms, CareHub empowers healthcare professionals to make faster, more informed decisions, while providing patients with accurate and timely health insights.
+
+Our products include:
+
+AI Diagnostic Assistant: An intelligent tool for analyzing symptoms, medical histories, and test results, providing healthcare professionals with accurate diagnostic suggestions.
+Predictive Analytics Engine: Leverages patient data to predict potential health risks and outcomes, allowing for proactive care and better resource management.
+Personalized Treatment Planner: Recommends evidence-based treatment plans tailored to individual patients, optimizing care delivery and improving recovery rates.
+Health Monitoring System: Integrates with wearable devices to monitor vital signs and provide real-time insights into patient health, alerting users to potential emergencies.
+At CareHub, we use state-of-the-art AI technologies to support healthcare professionals, enhance patient care, and drive innovation in the medical field.
+            </p>
+            <ul style="font-size: 1.1rem; line-height: 1.8;">
+                <li><strong>AI Diagnostic Assistant:</strong> A tool that assists doctors in diagnosing diseases quickly and accurately.</li>
+                <li><strong>Predictive Analytics:</strong> Predicts potential health risks based on patient history and real-time data.</li>
+                <li><strong>Smart Treatment Plans:</strong> Suggests personalized treatment plans based on current medical guidelines and patient data.</li>
+                <li><strong>Patient Monitoring System:</strong> Continuously tracks patient health metrics through wearable devices and alerts healthcare providers in case of critical events.</li>
+            </ul>
+        </div>
+    """, unsafe_allow_html=True)
+
+# Display the "Contact Us" section content when Contact Us button is clicked
+if contact_us_button:
+    st.markdown("""
+        <div class="about-section">
+            <h2>Contact Us</h2>
+            <p>
+                Have questions or need support? Reach out to us through carehubai2024@gmail.com:
+            </p>
+            <ul style="font-size: 1.1rem; line-height: 1.8;">
+                <li><strong>Email:</strong> support@carehub.ai</li>
+                <li><strong>Phone:</strong> +1 (123) 456-7890</li>
+                <li><strong>Website:</strong> www.carehub.ai</li>
+                <li><strong>Address:</strong> 123 Health Ave, City, State, ZIP</li>
+            </ul>
+        </div>
+    """, unsafe_allow_html=True)
+
 # Handle new feature interactions
 
-# User Profile Feature
 # User Profile Feature
 if user_profile_button:
     st.write("🔒 **User Profile**: Manage and update your profile securely with us. We prioritize your privacy and ensure that your personal data is encrypted and protected at all times...")
