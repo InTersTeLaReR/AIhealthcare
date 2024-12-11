@@ -3,6 +3,12 @@ import streamlit as st
 from dotenv import load_dotenv
 import google.generativeai as gen_ai
 import time
+from PIL import Image
+import pytesseract
+import pytesseract
+
+# Replace with the full path to your Tesseract installation
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # Load environment variables
 load_dotenv()
@@ -121,7 +127,7 @@ st.markdown("""
             line-height: 1.8;
             margin-bottom: 1rem;
         }
-            
+
     </style>
 """, unsafe_allow_html=True)
 
@@ -197,14 +203,6 @@ if products_button:
             <h2>Our Products</h2>
             <p>
                CareHub is at the forefront of transforming healthcare through artificial intelligence. Our suite of cutting-edge AI software products is designed to enhance diagnostic precision, improve patient outcomes, and streamline healthcare processes. With advanced machine learning models and intelligent algorithms, CareHub empowers healthcare professionals to make faster, more informed decisions, while providing patients with accurate and timely health insights.
-
-Our products include:
-
-AI Diagnostic Assistant: An intelligent tool for analyzing symptoms, medical histories, and test results, providing healthcare professionals with accurate diagnostic suggestions.
-Predictive Analytics Engine: Leverages patient data to predict potential health risks and outcomes, allowing for proactive care and better resource management.
-Personalized Treatment Planner: Recommends evidence-based treatment plans tailored to individual patients, optimizing care delivery and improving recovery rates.
-Health Monitoring System: Integrates with wearable devices to monitor vital signs and provide real-time insights into patient health, alerting users to potential emergencies.
-At CareHub, we use state-of-the-art AI technologies to support healthcare professionals, enhance patient care, and drive innovation in the medical field.
             </p>
             <ul style="font-size: 1.1rem; line-height: 1.8;">
                 <li><strong>AI Diagnostic Assistant:</strong> A tool that assists doctors in diagnosing diseases quickly and accurately.</li>
@@ -237,19 +235,6 @@ if contact_us_button:
 # User Profile Feature
 if user_profile_button:
     st.write("🔒 **User Profile**: Manage and update your profile securely with us. We prioritize your privacy and ensure that your personal data is encrypted and protected at all times...")
-    
-    # Add "Meet the Developers" section
-    st.markdown("""
-        <div style="margin-top: 2rem;">
-            <h3>👨‍💻 Meet the Developers</h3>
-            <ul style="font-size: 1.1rem; line-height: 2;">
-                <li><strong>ARJUN P GUPTA</strong> - Developer ID: 1MP22CS008</li>
-                <li><strong>KIRAN R</strong> - Developer ID: 1MP22CS025</li>
-                <li><strong>SANATH S GOWDA</strong> - Developer ID: 1MP22CS046</li>
-                <li><strong>SANTOSH S</strong> - Developer ID: 1MP22CS047</li>
-            </ul>
-        </div>
-    """, unsafe_allow_html=True)
 
 # Help Feature
 if help_button:
@@ -259,6 +244,33 @@ if help_button:
 if feedback_button:
     st.write("✍️ **Feedback**: Please provide your feedback here:\n- What did you like?\n- What can we improve?")
 
+# Image Upload for Prescription Analysis
+st.markdown("### 📸 Upload Prescription Photo for Analysis")
+uploaded_file = st.file_uploader("Choose a prescription photo...", type=["jpg", "jpeg", "png"])
+
+if uploaded_file:
+    # Display the uploaded image
+    image = Image.open(uploaded_file)
+    st.image(image, caption="Uploaded Prescription", use_column_width=True)
+    
+    # Process the image using OCR
+    st.write("🔍 Analyzing prescription...")
+    
+    # Perform OCR to extract text from the image
+    extracted_text = pytesseract.image_to_string(image)
+    
+    # Display extracted text
+    st.write("### Extracted Text from Prescription:")
+    st.text_area("Extracted Text", value=extracted_text, height=150)
+    
+    # Send the extracted text to Gemini-Pro for analysis
+    if extracted_text.strip():
+        gemini_response = st.session_state.chat_session.send_message(extracted_text)
+        with st.chat_message("assistant"):
+            st.markdown(gemini_response.text)
+    else:
+        st.write("No text could be extracted from the image. Please check the image quality.")
+    
 # Display the chat history
 for message in st.session_state.chat_session.history:
     with st.chat_message(translate_role_for_streamlit(message.role)):
