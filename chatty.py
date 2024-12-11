@@ -219,15 +219,21 @@ if contact_us_button:
         <div class="about-section">
             <h2>Contact Us</h2>
             <p>
-                Have questions or need support? Reach out to us through carehubai2024@gmail.com:
+                Have questions or need support? Reach out to :
+
+                ARJUN P GUPTA     USN : 1MP22CS008
+                KIRAN R           USN : 1MP22CS025
+                SANATH S GOWDA    USN : 1MP22CS046
+                SANTOSH S          USN : 1MP22CS047 
             </p>
-            <ul style="font-size: 1.1rem; line-height: 1.8;">
-                <li><strong>Email:</strong> support@carehub.ai</li>
-                <li><strong>Phone:</strong> +1 (123) 456-7890</li>
-                <li><strong>Website:</strong> www.carehub.ai</li>
-                <li><strong>Address:</strong> 123 Health Ave, City, State, ZIP</li>
-            </ul>
-        </div>
+                
+        #     <ul style="font-size: 1.1rem; line-height: 1.8;">
+        #         <li><strong>Email:</strong> support@carehub.ai</li>
+        #         <li><strong>Phone:</strong> +1 (123) 456-7890</li>
+        #         <li><strong>Website:</strong> www.carehub.ai</li>
+        #         <li><strong>Address:</strong> 123 Health Ave, City, State, ZIP</li>
+        #     </ul>
+        # </div>
     """, unsafe_allow_html=True)
 
 # Handle new feature interactions
