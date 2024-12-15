@@ -237,7 +237,7 @@ if contact_us_button:
     """, unsafe_allow_html=True)
 
 # Handle new feature interactions
-
+#trying Hencrypt
 # User Profile Feature
 if user_profile_button:
     st.write("🔒 **User Profile**: Manage and update your profile securely with us. We prioritize your privacy and ensure that your personal data is encrypted and protected at all times...")
