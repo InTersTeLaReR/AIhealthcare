@@ -160,7 +160,7 @@ with st.sidebar:
     user_profile_button = st.button("User Profile", type="secondary")
     help_button = st.button("Help", type="secondary")
     feedback_button = st.button("Feedback", type="secondary")
-    
+    Hencrypt updated
     # Additional sidebar options
     st.markdown("---")
     if st.button("Clear Chat"):
