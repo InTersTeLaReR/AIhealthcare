@@ -12,7 +12,7 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 
 # Load environment variables
 load_dotenv()
-
+#updating tesseract
 # Configure Streamlit page settings
 st.set_page_config(
     page_title="Chat with Gemini-Pro!",
