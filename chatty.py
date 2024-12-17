@@ -133,7 +133,7 @@ st.markdown("""
 
 # Get the API key from environment variables
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-
+#updated opencv part
 # Set up Google Gemini-Pro AI model
 gen_ai.configure(api_key=GOOGLE_API_KEY)
 model = gen_ai.GenerativeModel('gemini-pro')
