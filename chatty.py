@@ -6,7 +6,7 @@ import time
 from PIL import Image
 import pytesseract
 import pytesseract
-
+#updated src
 # Replace with the full path to your Tesseract installation
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
